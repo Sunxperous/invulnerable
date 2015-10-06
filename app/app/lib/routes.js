@@ -9,3 +9,5 @@ Router.route('/', {
   controller: 'HomeController',
   where: 'client'
 });
+
+Router.route('flight');

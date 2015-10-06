@@ -2,4 +2,15 @@
 /* Flight: Style */
 /*****************************************************************************/
 .flight {
+  height: 100vh;
+  text-align: center;
+  background-color: #fff3d6;
+}
+
+.timeline {
+  height: 30%;
+  background-color: #cbf4ff;
+}
+
+.content {
 }
