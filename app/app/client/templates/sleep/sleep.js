@@ -15,9 +15,10 @@ Template.Sleep.helpers({
   }
 });
 
-var polling = 5000; // 5 seconds.
-var colors = ['black', 'green', 'orange', 'red'];
-var spaceInBetween = 0.618 // Golden ratio.
+var polling = 1000; // Milliseconds.
+var colors = ['black', 'green', 'orange', 'red']; // Index 0 is not used.
+var spaceInBetween = 0.618; // Golden ratio.
+var maxBars = 12; // Limit of bars to show per chart.
 /*****************************************************************************/
 /* Sleep: Lifecycle Hooks */
 /*****************************************************************************/
@@ -26,17 +27,22 @@ Template.Sleep.onCreated(function () {
   move.set(original);
   setInterval(function() {
     original.push(Math.floor(Math.random() * 3) + 1);
+    if (original.length > maxBars) {
+      original.shift();
+    }
     move.set(original);
   }, polling);
 });
 
 Template.Sleep.onRendered(function () {
   var height = 400;
+  var numLevels = colors.length - 1; // How many different levels.
+
   Tracker.autorun(function() {
     data = move.get();
 
     // Format chart measurements.
-    var x = d3.scale.linear().domain([0, d3.max(data)]).range([0, height]);
+    var x = d3.scale.linear().domain([0, numLevels]).range([0, height]);
     var chart = d3.select('.sleep')
       .attr('width', '90%')
       .attr('height', height);
@@ -47,12 +53,13 @@ Template.Sleep.onRendered(function () {
 
     // Format bars for existing and new data together.
     var bar = chart.selectAll('g');
-    bar.select('rect').transition()
+    bar.select('rect')
+      .attr('height', function(d) { return x(d); })
+      .attr('y', function(d) { return height - x(d); })
+      .transition() // Only animate after this point.
       .attr('fill', function(d) { return colors[d]; })
       .attr('x', function(d, i) { return (100 / data.length * i) + '%'; })
-      .attr('y', function(d) { return height - x(d); })
-      .attr('width', (100 * spaceInBetween / data.length) + '%')
-      .attr('height', function(d) { return x(d); });
+      .attr('width', (100 * spaceInBetween / data.length) + '%');
   });
 });
 
