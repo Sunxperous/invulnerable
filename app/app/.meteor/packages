@@ -22,3 +22,4 @@ iron:router
 less
 ejson
 mizzao:jquery-ui
+d3js:d3

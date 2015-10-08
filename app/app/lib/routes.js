@@ -11,3 +11,10 @@ Router.route('/', {
 });
 
 Router.route('flight');
+
+
+Router.route('sleep', {
+  name: 'sleep',
+  controller: 'SleepController',
+  where: 'client'
+});
