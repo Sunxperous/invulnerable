@@ -4,10 +4,10 @@
 Template.Sleep.events({
 });
 
+var move = new ReactiveVar([]);
 /*****************************************************************************/
 /* Sleep: Helpers */
 /*****************************************************************************/
-var move = new ReactiveVar([3, 2, 2, 1, 2, 1, 1, 1, 3, 3, 1, 2, 3, 1, 2, 3, 3, 2, 1]);
 Template.Sleep.helpers({
   move: function() {
     console.log(move.get());
@@ -15,17 +15,21 @@ Template.Sleep.helpers({
   }
 });
 
+var polling = 5000; // 5 seconds.
+var colors = ['black', 'green', 'orange', 'red'];
+var spaceInBetween = 0.618 // Golden ratio.
 /*****************************************************************************/
 /* Sleep: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Sleep.onCreated(function () {
-  move.set([1, 2, 3]);
-  setTimeout(function() {
-    move.set([3, 2, 1, 3, 2, 1]);
-  }, 1000);
+  original = move.get();
+  move.set(original);
+  setInterval(function() {
+    original.push(Math.floor(Math.random() * 3) + 1);
+    move.set(original);
+  }, polling);
 });
 
-var colors = ['black', 'red', 'orange', 'green'];
 Template.Sleep.onRendered(function () {
   var height = 400;
   Tracker.autorun(function() {
@@ -43,11 +47,11 @@ Template.Sleep.onRendered(function () {
 
     // Format bars for existing and new data together.
     var bar = chart.selectAll('g');
-    bar.select('rect')
+    bar.select('rect').transition()
       .attr('fill', function(d) { return colors[d]; })
       .attr('x', function(d, i) { return (100 / data.length * i) + '%'; })
       .attr('y', function(d) { return height - x(d); })
-      .attr('width', (99 / data.length) + '%')
+      .attr('width', (100 * spaceInBetween / data.length) + '%')
       .attr('height', function(d) { return x(d); });
   });
 });
