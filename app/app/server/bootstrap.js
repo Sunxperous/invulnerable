@@ -36,7 +36,7 @@ if (Meteor.isServer) {
               'level': 1,
               'timestamp': cur.fetch()[0].timestamp
             });
-          } else if (disturbance > 0 && disturbance < 11) {
+          } else if (disturbance > 0 && disturbance < 5) {
             Sleep.insert({
               'level': 2,
               'timestamp': cur.fetch()[0].timestamp
