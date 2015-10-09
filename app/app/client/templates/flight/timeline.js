@@ -51,6 +51,7 @@ Template.Timeline.onRendered(function () {
   var windowWidth = $(window).width();
 
   var thirdDuration = hours / 3.0;
+
   if (thirdDuration < 6.0) {
     hourWidth = windowWidth / 6.0;
   } else {
@@ -107,9 +108,16 @@ Template.Timeline.onRendered(function () {
     left += width;
   }
 
-  $('.timeline').css('width', totalWidth + 'px');
+  var $timeline = $('.timeline');
+
+  $timeline.css('width', totalWidth + 'px');
   timelineEntriesStartTimeOffset.set(entriesStartTimeOffset);
   timelineEntriesEndTimeOffset.set(entriesEndTimeOffset);
+
+  $timeline.draggable({
+    axis: 'x',
+    containment: [windowWidth - totalWidth,$timeline.position.top,0,$timeline.position.top]
+  });
 });
 
 Template.Timeline.onDestroyed(function () {
