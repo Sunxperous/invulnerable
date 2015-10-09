@@ -22,6 +22,7 @@ iron:router
 less
 ejson
 mizzao:jquery-ui
+dsyko:jquery-ui-touch-punch
 d3js:d3
 reactive-var
 semantic:ui-css
