@@ -1,0 +1,9 @@
+<template name="Efficiency">
+  <div class="efficiency">
+<<<<<<< HEAD
+    Your sleep efficiency is {{ efficiency }}.
+=======
+    Efficiency: {{ efficiency }}%
+>>>>>>> e163c113b9a3a5d58ca24425a90393b0809bcd44
+  </div>
+</template>

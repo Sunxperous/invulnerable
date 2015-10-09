@@ -12,6 +12,14 @@
         <div class="row ui raised segment">
           {{> Efficiency efficiency=sum}}
         </div>
+<<<<<<< HEAD
+        <div class="row ui horizontal segments">
+          {{> Sum sum=sum.light}} {{> Sum sum=sum.medium}} {{> Sum sum=sum.deep}}
+        </div>
+        <div class="row ui horizontal segments">
+          <div class="sum ui raised segment">
+            <img src="envisage.png" alt="" class="logo" />
+=======
         <div class="row">
           <div class="one wide column">
             {{> Sum sum=sum.deep color=colors.[1] description="deep"}}
@@ -21,6 +29,7 @@
           </div>
           <div class="one wide column">
             {{> Sum sum=sum.light color=colors.[3] description="light"}}
+>>>>>>> e163c113b9a3a5d58ca24425a90393b0809bcd44
           </div>
         </div>
       </div>
