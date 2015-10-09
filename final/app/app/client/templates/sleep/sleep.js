@@ -29,7 +29,7 @@ Template.Sleep.helpers({
 var polling = 1000; // Milliseconds.
 var colors = ['black', '#468966', '#FFB03B', '#EA2E49']; // Index 0 is not used.
 var spaceInBetween = 0.618; // Golden ratio.
-var maxBars = 12; // Limit of bars to show per chart.
+var maxBars = 20; // Limit of bars to show per chart.
 /*****************************************************************************/
 /* Sleep: Lifecycle Hooks */
 /*****************************************************************************/

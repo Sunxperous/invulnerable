@@ -6,4 +6,4 @@ Members:
 * Wu Di
 * Sun Wang Jun
 
-Install meteor and iron-cli, and run `iron run` in the top level `app` folder.
+Install meteor and iron-cli, and run `iron run` in the top level `app` folder and visit `http://localhost:3000/flight`.
