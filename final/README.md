@@ -5,3 +5,5 @@ Members:
 * Sean Ho Kai Jie
 * Wu Di
 * Sun Wang Jun
+
+Install meteor and iron-cli, and run `iron run` in the top level `app` folder.
