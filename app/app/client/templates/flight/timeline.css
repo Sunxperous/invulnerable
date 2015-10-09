@@ -46,3 +46,34 @@
   background-color: orange;
   border-radius: 3px 0 0 3px;
 }
+
+.timeline-sleep-bar {
+  height: 20px;
+  top: -5px;
+  background-color: green;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.timeline-sleep-start, .timeline-sleep-end {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: black;
+  position: absolute;
+  top: -10px;
+  z-index: 99;
+}
+
+.timeline-sleep-start img, .timeline-sleep-end img {
+  width: 60%;
+  margin-top: 20%;
+  text-align: center;
+}
+
+
+.timeline-sleep-bar:hover {
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.8);
+    -moz-box-shadow:    0px 0px 8px 0px rgba(255, 255, 255, 0.8);
+    box-shadow:         0px 0px 8px 0px rgba(255, 255, 255, 0.8);
+}

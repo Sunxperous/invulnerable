@@ -9,12 +9,23 @@ var startTimeOffset = '+08:00';
 var endTime = moment('2015-10-10 12:30:00.000-08:00');
 var endTimeOffset = '-08:00';
 var flightDuration = 30000;
+var sleepPeriods = [
+  {
+    startTime: '2015-10-10 14:30:00.000+08:00',
+    endTime: '2015-10-10 16:30:00.000+08:00'
+  },
+  {
+    startTime: '2015-10-10 03:30:00.000-08:00',
+    endTime: '2015-10-10 10:30:00.000-08:00'
+  }
+];
 
 var timelineEntriesStartTimeOffset = new ReactiveVar([]);
 var timelineEntriesEndTimeOffset = new ReactiveVar([]);
 var timelineWidth = new ReactiveVar(0);
 var timelineLeft = new ReactiveVar(0);
 var flightDurationWidth = new ReactiveVar(0);
+var sleepEntries = new ReactiveVar([]);
 
 /*****************************************************************************/
 /* Timeline: Helpers */
@@ -40,6 +51,12 @@ Template.Timeline.helpers({
   },
   flightDurationWidth: function() {
     return flightDurationWidth.get();
+  },
+  sleepEntries: function() {
+    return sleepEntries.get();
+  },
+  timelineSleepPosition: function(left) {
+    return left - 15;
   }
 });
 
@@ -113,6 +130,22 @@ Template.Timeline.onRendered(function () {
     }
     left += width;
   }
+
+  var sleepPeriodEntries = [];
+
+  for (var i = 0; i < sleepPeriods.length; i++) {
+    var period = sleepPeriods[i];
+    var periodWidth = hourWidth * moment(period.endTime).diff(moment(period.startTime), 'hours', true);
+    var periodLeft = hourWidth * moment(period.startTime).diff(moment(startTime), 'hours', true);
+    console.log(moment(period.startTime).diff(moment(startTime), 'hours', true));
+    sleepPeriodEntries.push({
+      'periodWidth': periodWidth,
+      'periodLeft': periodLeft,
+      'periodEnd': periodLeft + periodWidth
+    });
+  }
+
+  sleepEntries.set(sleepPeriodEntries);
 
   var $timeline = $('.timeline');
 
