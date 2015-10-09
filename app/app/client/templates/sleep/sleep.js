@@ -15,6 +15,13 @@ Template.Sleep.helpers({
   },
   efficiency: function() {
     return '50%';
+  },
+  sum: function() {
+    return {
+      light: 10,
+      medium: 20,
+      deep: 30
+    };
   }
 });
 

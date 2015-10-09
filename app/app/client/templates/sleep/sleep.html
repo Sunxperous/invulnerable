@@ -1,6 +1,23 @@
 <template name="Sleep">
-  <svg class="sleep">
-  </svg>
-  {{move}}
-  {{> Efficiency efficiency=efficiency}}
+  <div class="sleep-page">
+    <div class="ui grid">
+      <div class="ten wide column">
+        <div class="ui raised segment">
+          <svg class="sleep">
+          </svg>
+          <p>{{move}}</p>
+        </div>
+      </div>
+      <div class="six wide column">
+        <div class="row ui raised segment">
+          {{> Efficiency efficiency=efficiency}}
+        </div>
+        <div class="row ui horizontal segments">
+          {{> Sum sum=sum.light}}
+          {{> Sum sum=sum.medium}}
+          {{> Sum sum=sum.deep}}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
