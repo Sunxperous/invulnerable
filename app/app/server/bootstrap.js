@@ -6,12 +6,13 @@ if (Meteor.isServer) {
         if (error) {
           console.log(error);
         } else {
+          console.log(result.content.split(":")[1].split("}")[0]);
           Turbulence.insert({
             'magnitude': result.content.split(":")[1].split("}")[0],
-            'timestamp': Math.round((new Date()).getTime() / 1000)
+            'timestamp': Math.round((new Date()).getTime())
           });
         }
       });
-    }, 1000);
+    }, 333);
   })
 }
