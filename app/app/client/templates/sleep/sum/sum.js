@@ -19,6 +19,7 @@ Template.Sum.onCreated(function () {
 Template.Sum.onRendered(function () {
   var self = this;
   this.autorun(function() {
+    var v = Sleep.find({level: self.data.level}).count() / Sleep.find({}).count();
     var circle = d3.scale.ordinal().range([0, 1]);
     var svg = d3.select(self.find('.circle'))
       .attr('width', 100)
@@ -29,11 +30,11 @@ Template.Sum.onRendered(function () {
     var g = svg.select('g')
       .attr('transform', 'translate(50, 50)')
       .select('path')
-      .attr('d', arc.endAngle(self.data.sum / self.data.total * Math.PI * 2));
+      .attr('d', arc.endAngle(v * Math.PI * 2));
     var t = svg.select('g').select('text')
       .attr('x', '-0.5em')
       .attr('y', '0.25em')
-      .text(Math.floor(self.data.sum / self.data.total * 100));
+      .text(Math.floor(v * 100));
   });
 });
 
