@@ -1,21 +1,27 @@
 <template name="Sleep">
   <div class="sleep-page">
-    <div class="ui grid">
-      <div class="ten wide column">
+    <div class="ui stackable grid">
+      <div class="twelve wide column">
         <div class="ui raised segment">
           <svg class="sleep">
           </svg>
           <p>{{move}}</p>
         </div>
       </div>
-      <div class="six wide column">
+      <div class="four wide column">
         <div class="row ui raised segment">
           {{> Efficiency efficiency=efficiency}}
         </div>
-        <div class="row ui horizontal segments">
-          {{> Sum sum=sum.light}}
-          {{> Sum sum=sum.medium}}
-          {{> Sum sum=sum.deep}}
+        <div class="row">
+          <div class="one wide column">
+            {{> Sum sum=sum.light color=colors.[1] description="deep"}}
+          </div>
+          <div class="one wide column">
+            {{> Sum sum=sum.medium color=colors.[2] description="medium"}}
+          </div>
+          <div class="one wide column">
+            {{> Sum sum=sum.deep color=colors.[3] description="light"}}
+          </div>
         </div>
       </div>
     </div>

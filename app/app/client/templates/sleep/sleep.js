@@ -9,6 +9,9 @@ var move = new ReactiveVar([]);
 /* Sleep: Helpers */
 /*****************************************************************************/
 Template.Sleep.helpers({
+  colors: function() {
+    return colors;
+  },
   move: function() {
     console.log(move.get());
     return move.get();
@@ -18,9 +21,9 @@ Template.Sleep.helpers({
   },
   sum: function() {
     return {
-      light: 10,
-      medium: 20,
-      deep: 30
+      light: new ReactiveVar(10),
+      medium: new ReactiveVar(20),
+      deep: new ReactiveVar(30)
     };
   }
 });
