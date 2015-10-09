@@ -4,7 +4,6 @@
 Template.Sleep.events({
 });
 
-var move = new ReactiveVar([]);
 /*****************************************************************************/
 /* Sleep: Helpers */
 /*****************************************************************************/
@@ -13,7 +12,7 @@ Template.Sleep.helpers({
     return colors;
   },
   move: function() {
-    return move.get();
+    return Sleep.find({}, {limit: maxBars}).fetch();
   },
   sum: function() {
     return {
@@ -32,24 +31,15 @@ var maxBars = 12; // Limit of bars to show per chart.
 /* Sleep: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Sleep.onCreated(function () {
-  original = move.get();
-  move.set(original);
-  setInterval(function() {
-    original.push(Math.floor(Math.random() * 3) + 1);
-    if (original.length > maxBars) {
-      original.shift();
-    }
-    move.set(original);
-  }, polling);
 });
 
 Template.Sleep.onRendered(function () {
   var height = 400;
   var numLevels = colors.length - 1; // How many different levels.
 
-  Tracker.autorun(function() {
-    data = move.get();
 
+  Tracker.autorun(function() {
+    var move = Sleep.find({}, {limit: maxBars, sort: {timestamp: -1}}).fetch();
     // Format chart measurements.
     var x = d3.scale.linear().domain([0, numLevels]).range([0, height]);
     var chart = d3.select('.sleep')
@@ -57,18 +47,18 @@ Template.Sleep.onRendered(function () {
       .attr('height', height);
 
     // Add new bars for each new data.
-    var barNew = chart.selectAll('g').data(data).enter().append('g');
+    var barNew = chart.selectAll('g').data(move.reverse()).enter().append('g');
     barNew.append('rect');
 
     // Format bars for existing and new data together.
     var bar = chart.selectAll('g');
     bar.select('rect')
-      .attr('height', function(d) { return x(d); })
-      .attr('y', function(d) { return height - x(d); })
+      .attr('height', function(d) { return x(d.level); })
+      .attr('y', function(d) { return height - x(d.level); })
       .transition() // Only animate after this point.
-      .attr('fill', function(d) { return colors[d]; })
-      .attr('x', function(d, i) { return (100 / data.length * i) + '%'; })
-      .attr('width', (100 * spaceInBetween / data.length) + '%');
+      .attr('fill', function(d) { return colors[d.level]; })
+      .attr('x', function(d, i) { return (100 / move.length * i) + '%'; })
+      .attr('width', (100 * spaceInBetween / move.length) + '%');
   });
 });
 
