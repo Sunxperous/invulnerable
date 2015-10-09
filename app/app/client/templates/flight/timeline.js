@@ -8,11 +8,13 @@ var startTime = moment('2015-10-10 08:30:00.000+08:00');
 var startTimeOffset = '+08:00';
 var endTime = moment('2015-10-10 12:30:00.000-08:00');
 var endTimeOffset = '-08:00';
+var flightDuration = 30000;
 
 var timelineEntriesStartTimeOffset = new ReactiveVar([]);
 var timelineEntriesEndTimeOffset = new ReactiveVar([]);
 var timelineWidth = new ReactiveVar(0);
 var timelineLeft = new ReactiveVar(0);
+var flightDurationWidth = new ReactiveVar(0);
 
 /*****************************************************************************/
 /* Timeline: Helpers */
@@ -35,6 +37,9 @@ Template.Timeline.helpers({
   },
   timelineLeft: function() {
     return timelineLeft.get();
+  },
+  flightDurationWidth: function() {
+    return flightDurationWidth.get();
   }
 });
 
@@ -60,6 +65,7 @@ Template.Timeline.onRendered(function () {
 
   timelineWidth.set(hourWidth * moment(endTime).diff(moment(startTime), 'hours', true));
   timelineLeft.set(windowWidth / 2.0);
+  flightDurationWidth.set(flightDuration / (endTime.diff(startTime, 'seconds')) * timelineWidth.get());
   var totalWidth = timelineWidth.get() + windowWidth;
 
   var entriesStartTimeOffset = [];

@@ -8,7 +8,9 @@
           </div>
         </div>
       {{/each}}
-      <div class="timeline-bar" style="left:{{timelineLeft}}px; width:{{timelineWidth}}px;"></div>
+      <div id="timeline-bar" style="left:{{timelineLeft}}px; width:{{timelineWidth}}px;">
+        <div id="timeline-flight-progress-bar" style="width:{{flightDurationWidth}}px;"></div>
+      </div>
       {{#each timelineEntriesEndTimeOffset}}
         <div class="timeline-hour end-time" style="left:{{left}}px; width:{{width}}px;">
           <div class="timeline-item">
