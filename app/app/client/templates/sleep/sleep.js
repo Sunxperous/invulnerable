@@ -26,7 +26,7 @@ Template.Sleep.helpers({
 });
 
 var polling = 1000; // Milliseconds.
-var colors = ['black', 'green', 'orange', 'red']; // Index 0 is not used.
+var colors = ['black', '#468966', '#FFB03B', '#EA2E49']; // Index 0 is not used.
 var spaceInBetween = 0.618; // Golden ratio.
 var maxBars = 12; // Limit of bars to show per chart.
 /*****************************************************************************/
