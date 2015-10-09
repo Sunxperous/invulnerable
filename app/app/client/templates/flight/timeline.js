@@ -55,8 +55,14 @@ Template.Timeline.helpers({
   sleepEntries: function() {
     return sleepEntries.get();
   },
-  timelineSleepPosition: function(left) {
+  iconPosition: function(left) {
     return left - 15;
+  },
+  takeoffLeft: function() {
+    return -15;
+  },
+  landingLeft: function() {
+    return timelineWidth.get() - 15;
   }
 });
 
@@ -64,7 +70,10 @@ Template.Timeline.helpers({
 /* Timeline: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Timeline.onCreated(function () {
-
+  $('.timeline-container').on('scroll', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  });
 });
 
 Template.Timeline.onRendered(function () {
