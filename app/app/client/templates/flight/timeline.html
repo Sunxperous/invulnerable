@@ -10,10 +10,12 @@
       {{/each}}
       <div id="timeline-bar" style="left:{{timelineLeft}}px; width:{{timelineWidth}}px;">
         <div id="timeline-flight-progress-bar" style="width:{{flightDurationWidth}}px;"></div>
+        <div class="timeline-icons timeline-takeoff" style="left:{{takeoffLeft}}px;"><img src="takeoff.png"></div>
+        <div class="timeline-icons timeline-landing" style="left:{{landingLeft}}px;"><img src="landing.png"></div>
         {{#each sleepEntries}}
           <div class="timeline-sleep-bar" style="left:{{periodLeft}}px; width:{{periodWidth}}px;"></div>
-          <div class="timeline-sleep-start" style="left:{{timelineSleepPosition periodLeft}}px"><img src="sleep.png"></div>
-          <div class="timeline-sleep-end" style="left:{{timelineSleepPosition periodEnd}}px"><img src="alarm.png"></div>          
+          <div class="timeline-icons timeline-sleep-start" style="left:{{iconPosition periodLeft}}px"><img src="sleep.png"></div>
+          <div class="timeline-icons imeline-sleep-end" style="left:{{iconPosition periodEnd}}px"><img src="alarm.png"></div>
         {{/each}}
       </div>
       {{#each timelineEntriesEndTimeOffset}}

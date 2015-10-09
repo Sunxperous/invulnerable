@@ -3,9 +3,10 @@
 /*****************************************************************************/
 .timeline-container {
   background-color: #304269;
-  height: 90px;
+  height: 100px;
   overflow-x: hidden;
   position: relative;
+  font-size: 12px;
 }
 
 .timeline {
@@ -23,6 +24,12 @@
   color: white;
   height: 25px;
   width: 50px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .timeline-hour.start-time {
@@ -30,7 +37,7 @@
 }
 
 .timeline-hour.end-time {
-  top: 50px;
+  top: 55px;
 }
 
 #timeline-bar {
@@ -55,7 +62,7 @@
   border-radius: 5px;
 }
 
-.timeline-sleep-start, .timeline-sleep-end {
+.timeline-icons {
   width: 30px;
   height: 30px;
   border-radius: 15px;
@@ -65,7 +72,7 @@
   z-index: 99;
 }
 
-.timeline-sleep-start img, .timeline-sleep-end img {
+.timeline-icons img {
   width: 60%;
   margin-top: 20%;
   text-align: center;
