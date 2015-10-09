@@ -1,32 +1,32 @@
 Sleep = new Mongo.Collection('sleep');
 
 
-if (Meteor.isServer) {
-  Sleep.allow({
-    insert: function (userId, doc) {
-      return false;
-    },
+// if (Meteor.isServer) {
+//   Sleep.allow({
+//     insert: function (userId, doc) {
+//       return false;
+//     },
 
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
+//     update: function (userId, doc, fieldNames, modifier) {
+//       return false;
+//     },
 
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
+//     remove: function (userId, doc) {
+//       return false;
+//     }
+//   });
 
-  Sleep.deny({
-    insert: function (userId, doc) {
-      return true;
-    },
+//   Sleep.deny({
+//     insert: function (userId, doc) {
+//       return true;
+//     },
 
-    update: function (userId, doc, fieldNames, modifier) {
-      return true;
-    },
+//     update: function (userId, doc, fieldNames, modifier) {
+//       return true;
+//     },
 
-    remove: function (userId, doc) {
-      return true;
-    }
-  });
-}
+//     remove: function (userId, doc) {
+//       return true;
+//     }
+//   });
+// }
