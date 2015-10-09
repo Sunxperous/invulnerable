@@ -12,6 +12,9 @@ Template.Sleep.helpers({
   move: function() {
     console.log(move.get());
     return move.get();
+  },
+  efficiency: function() {
+    return '50%';
   }
 });
 
