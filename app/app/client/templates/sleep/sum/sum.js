@@ -25,7 +25,7 @@ Template.Sum.onRendered(function () {
       .attr('height', 100);
     var arc = d3.svg.arc()
       .startAngle(0)
-      .innerRadius(30).outerRadius(25);
+      .innerRadius(40).outerRadius(50);
     var g = svg.select('g')
       .attr('transform', 'translate(50, 50)')
       .select('path')
@@ -35,9 +35,6 @@ Template.Sum.onRendered(function () {
       .attr('y', '0.25em')
       .text(self.data.sum.get());
   });
-  setTimeout(function() { 
-    self.data.sum.set(90);
-  }, 1000);
 });
 
 Template.Sum.onDestroyed(function () {
