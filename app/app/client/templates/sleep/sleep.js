@@ -13,11 +13,7 @@ Template.Sleep.helpers({
     return colors;
   },
   move: function() {
-    console.log(move.get());
     return move.get();
-  },
-  efficiency: function() {
-    return '50%';
   },
   sum: function() {
     return {
