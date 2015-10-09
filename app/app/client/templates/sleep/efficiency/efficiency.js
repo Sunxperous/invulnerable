@@ -10,8 +10,8 @@ Template.Efficiency.events({
 Template.Efficiency.helpers({
   efficiency: function() {
     var sum = Template.instance().data.efficiency;
-    var total = sum.light.get() + sum.medium.get() + sum.deep.get() * sum.deep.get();
-    var sleepTime = sum.medium.get() + sum.deep.get() * sum.deep.get();
+    var total = sum.light + sum.medium + sum.deep * sum.deep;
+    var sleepTime = sum.medium + sum.deep * sum.deep;
     var effi = sleepTime / total * 100;
     var effiInt = Math.floor(effi);
     return effiInt;

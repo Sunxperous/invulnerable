@@ -29,11 +29,11 @@ Template.Sum.onRendered(function () {
     var g = svg.select('g')
       .attr('transform', 'translate(50, 50)')
       .select('path')
-      .attr('d', arc.endAngle(self.data.sum.get() / 100 * Math.PI * 2));
+      .attr('d', arc.endAngle(self.data.sum / self.data.total * Math.PI * 2));
     var t = svg.select('g').select('text')
       .attr('x', '-0.5em')
       .attr('y', '0.25em')
-      .text(self.data.sum.get());
+      .text(Math.floor(self.data.sum / self.data.total * 100));
   });
 });
 

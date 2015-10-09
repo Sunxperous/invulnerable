@@ -16,10 +16,13 @@ Template.Sleep.helpers({
   },
   sum: function() {
     return {
-      light: new ReactiveVar(10),
-      medium: new ReactiveVar(20),
-      deep: new ReactiveVar(30)
+      light: Sleep.find({level: 3}).count(),
+      medium: Sleep.find({level: 2}).count(),
+      deep: Sleep.find({level: 1}).count()
     };
+  },
+  total: function() {
+    return Sleep.find({}).count();
   }
 });
 
