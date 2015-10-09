@@ -7,38 +7,5 @@
   background-color: #fff3d6;
 }
 
-.timeline-container {
-  background-color: #cbf4ff;
-  height: 30%;
-  max-height: 200px;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.timeline {
-  background-color: #fff;
-  bottom: 10%;
-  height: 50px;
-  left: 0;
-  position: absolute;
-  width: 200%;
-}
-
-.timeline-item {
-  background-color: #000;
-  color: #f00;
-  height: 25px;
-  position: absolute;
-  width: 50px;
-}
-
-.takeoff {
-  left: 10px;
-}
-
-.landing {
-  right: 10px;
-}
-
 .content {
 }

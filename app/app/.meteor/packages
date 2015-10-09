@@ -25,3 +25,4 @@ mizzao:jquery-ui
 d3js:d3
 reactive-var
 semantic:ui-css
+momentjs:moment

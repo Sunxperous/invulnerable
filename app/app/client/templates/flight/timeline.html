@@ -1,0 +1,22 @@
+<template name="Timeline">
+  <div class="timeline-container">
+    <img id="timeline-aeroplane" src= "/sia_boeing_747.png">
+    <div class="timeline">
+      {{#each timelineEntriesStartTimeOffset}}
+        <div class="timeline-hour start-time" style="left:{{left}}px; width:{{width}}px;">
+          <div class="timeline-item">
+            {{time}}
+          </div>
+        </div>
+      {{/each}}
+      <div class="timeline-bar" style="left:{{timelineLeft}}px; width:{{timelineWidth}}px;"></div>
+      {{#each timelineEntriesEndTimeOffset}}
+        <div class="timeline-hour end-time" style="left:{{left}}px; width:{{width}}px;">
+          <div class="timeline-item">
+            {{time}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>
